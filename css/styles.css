@@ -158,19 +158,19 @@ nav h1 a {
   margin: 0;
   padding: 20px 5px 30px;
   text-align: center;
+	max-width: 1200px;
 }
 
 #restaurants-list li {
   background-color: #fff;
   border: 2px solid #ccc;
   font-family: Arial,sans-serif;
-  margin: 15px;
-  min-height: 380px;
-  padding: 0 30px 25px;
+  margin: 10px;
+  /* min-height: 380px; */
+  padding: 10px;
   text-align: left;
-  width: (100% - 30px);
+  width: calc(100% - 20px);
 }
-
 #restaurants-list .restaurant-img {
   background-color: #ccc;
   display: block;
@@ -209,6 +209,75 @@ nav h1 a {
   text-transform: uppercase;
 }
 
+/* Horizontal layout of Restaurant revieu list items*/
+
+@media (min-width: 480px) {
+	#restaurants-list {
+		display: flex;
+		flex-wrap: wrap;
+	}
+	#restaurants-list .restaurant-img {
+		margin: 5px 15px 15px 0;
+		max-width: 50%;
+		min-width: 50%;
+		height: auto;
+		min-height: 1%;
+		display: inline;
+		float: left;
+	}
+	#restaurants-list li h1 {
+		margin: 10px 0 10px;
+	}
+}
+@media (min-width: 640px) {
+	#restaurants-list li {
+	  width: calc(50% - 20px);
+	}
+	#restaurants-list .restaurant-img {
+	  display: block;
+	  margin: 0;
+	  max-width: 100%;
+	  min-height: 248px;
+	  min-width: 100%;
+	}
+	#restaurants-list li h1 {
+		margin: 20px 0 10px;
+	}
+}
+
+@media (min-width: 900px) {
+	#restaurants-list .restaurant-img {
+		margin: 5px 15px 15px 0;
+		max-width: 50%;
+		min-width: 50%;
+		height: auto;
+		min-height: 1%;
+		display: inline;
+		float: left;
+	}
+	#restaurants-list li h1 {
+		margin: 10px 0 10px;
+	}
+}
+
+@media (min-width: 1200px) {
+	#restaurants-list {
+	  margin: 0 auto;
+	}
+	#restaurants-list li {
+	  width: calc(25% - 20px);
+	}
+	#restaurants-list .restaurant-img {
+	  display: block;
+	  margin: 0;
+	  max-width: 100%;
+	  min-height: 248px;
+	  min-width: 100%;
+	}
+	#restaurants-list li h1 {
+		margin: 20px 0 10px;
+	}
+}
 /* ====================== Restaurant Details ====================== */
 .inside header {
   position: fixed;
