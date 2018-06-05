@@ -53,6 +53,13 @@ article, aside, canvas, details, figcaption, figure, footer, header, hgroup, men
 	max-width: 1200px;
 	margin: 0 auto;
 }
+#maincontent:empty {
+	text-align: center;
+}
+#maincontent:empty:after {
+	content: 'Your apppetizer is on its way!';
+}
+
 
 #footer {
   background-color: #444;
