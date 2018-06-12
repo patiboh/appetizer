@@ -177,15 +177,13 @@ nav h1 a {
 }
 
 @media (min-width: 750px) {
+
 	#map-container {
 		width: 70%;
 	}
 	.filter-options {
-    min-height: 400px;
+    height: 360px;
     width: 30%;
-    position: absolute;
-    top: 0;
-    left: 0;
 	}
 	.filter-options select {
   	width: calc(100% - 12px); /* 22px = margins + borders */
@@ -196,7 +194,7 @@ nav h1 a {
   background-color: #f3f3f3;
   list-style: outside none none;
   margin: 0;
-  padding: 20px 0 30px;
+  padding: 10px 0 20px;
   text-align: center;
 	width: 100%;
 }
@@ -382,14 +380,18 @@ nav h1 a {
   padding: 140px 40px 30px;
   width: 100%;
 }
-
 @media (min-width: 900px) {
-	 #map-container, #restaurant-container, #reviews-container {
+	 #restaurant-container, .inside #reviews-container {
 		width: 50%;
 	}
 }
 #reviews-container {
-  padding: 30px 40px 80px;
+  padding: 10px 10px 20px;
+}
+@media (min-width: 768px) {
+	#reviews-container {
+	  padding: 30px 40px 80px;
+	}
 }
 
 #reviews-container h2 {
