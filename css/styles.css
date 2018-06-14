@@ -271,7 +271,7 @@ nav h1 a {
   font-size: 1rem;
 	line-height: 2;
   margin: 10px 0 0;
-  padding: 8px 30px;
+  padding: 5px 30px;
   text-align: center;
   text-decoration: none;
   text-transform: uppercase;
@@ -536,10 +536,4 @@ object, video {
 
 * {
 	box-sizing: border-box;
-}
-
-/* ====================== Touch ====================== */
-nav a, li a, button {
-	min-width: 48px;
-	min-height: 48px;
 }
