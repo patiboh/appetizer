@@ -42,7 +42,13 @@ h1, h2, h3, h4, h5, h6 {
 article, aside, canvas, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
 	display: block;
 }
-
+#maincontent {
+	width: 100;
+	text-align: center;
+}
+.home-subtitle {
+	text-align: left;
+}
 #maincontent {
   background-color: #f3f3f3;
   min-height: 100%;
@@ -52,12 +58,32 @@ article, aside, canvas, details, figcaption, figure, footer, header, hgroup, men
 	justify-content: flex-start;
 	max-width: 1200px;
 	margin: 0 auto;
+	text-align: left;
 }
 #maincontent:empty {
 	text-align: center;
 }
 #maincontent:empty:after {
 	content: 'Your apppetizer is on its way!';
+}
+.home-subtitle {
+	color: #fff;
+}
+.home-subtitle {
+    padding: 10px 15px 16px;
+		background: #05a0a0;
+    font-size: 1.25rem;
+    margin: 0 auto;
+		display: inline-block;
+		width: 100%;
+		font-weight: normal;
+}
+h2 {
+  color: #095aa0;
+  font-size: 1.5rem;
+  font-weight: 300;
+  padding: 0 0 0 10px;
+	margin: 0;
 }
 
 header a:focus, header a:hover {
@@ -139,13 +165,20 @@ nav h1 a {
 }
 
 @media (min-width: 750px) {
+	.home-subtitle {
+    padding: 10px 20px 16px;
+	}
 	#breadcrumb {
     padding: 10px 20px 16px;
-		background: linear-gradient(0.65turn, transparent,  #05a0a0, #095aa0);
+		background:linear-gradient(0.65turn, transparent,  #05a0a0, #095aa0);
 	}
 }
 @media (min-width: 900px) {
-	#breadcrumb {
+	.home-subtitle {
+    padding: 10px 40px 16px;
+	}
+	#breadcrumb,
+	.home-subtitle {
     padding: 10px 40px 16px;
 	}
 }
@@ -162,24 +195,20 @@ nav h1 a {
 }
 
 /* ====================== Restaurant Filtering ====================== */
-.filter-container h2 {
-	color: #fff;
-	background-color: #095aa0;
-}
-
 .filter-options {
   width: 100%;
   height: auto;
-  background: linear-gradient(#095aa0 50%, #05a0a0);
+  background: linear-gradient(#095aa0 30%, #05a0a0);
   align-items: center;
 	padding: 20px 10px 15px;
 }
 
-.filter-options p {
+.filter-options h2 {
   color: white;
   font-weight: normal;
   line-height: 1;
-  margin: 0 5px;
+  margin: 0 5px 10px;
+	padding: 0;
 }
 
 .filter-options select {
@@ -192,7 +221,7 @@ nav h1 a {
   letter-spacing: 0;
   margin: 10px 5px;
   padding: 0 10px;
-  width: calc(100% - 12px); /* 22px = margins + borders */
+  width: calc(100% - 13px); /* 22px = margins + borders */
 	box-sizing: border-box;
 }
 
@@ -213,14 +242,15 @@ nav h1 a {
 		height: 100%;
 	}
 	.filter-options {
-    height: 400px;
+    height: 456px;
     width: 50%;
 		position: absolute;
-		top: 0;
+		top: -56px;
 		right: 0;
+		padding-top: 56px;
 	}
 	.filter-options select {
-  	width: calc(100% - 13px); /* 22px = margins + borders */
+  	width: calc(100% - 13px); /* 13px = margins + borders */
 	}
 }
 
@@ -243,6 +273,9 @@ nav h1 a {
 	}
 }
 /* ====================== Restaurant Listing ====================== */
+.restaurants-container > h2 {
+	padding: 20px 20px 0;
+}
 #restaurants-list {
   background-color: #f3f3f3;
   list-style: outside none none;
@@ -271,7 +304,7 @@ nav h1 a {
 	height: auto;
 }
 
-#restaurants-list li h1 {
+#restaurants-list li h3 {
   color: #095aa0;
   font-family: Arial,sans-serif;
   font-size: 1rem;
@@ -310,7 +343,7 @@ nav h1 a {
 	#restaurants-list {
 		display: flex;
 		flex-wrap: wrap;
-		padding: 20px;
+		padding: 10px 20px 20px;
 	}
 	#restaurants-list .restaurant-img {
 		margin: 7px 15px 7px 5px;
@@ -319,13 +352,16 @@ nav h1 a {
 		display: inline;
 		float: left;
 	}
-	#restaurants-list li h1 {
+	#restaurants-list li h3 {
 		margin: 5px 0 10px;
 	}
 }
 @media (min-width: 640px) {
+	.restaurants-container > h2 {
+		padding: 20px 30px 0;
+	}
 	#restaurants-list {
-		padding: 20px 20px 40px;
+		padding-bottom: 40px;
 	}
 	#restaurants-list li {
 		margin: 10px;
@@ -342,9 +378,6 @@ nav h1 a {
 }
 
 @media (min-width: 900px) {
-	#restaurants-list {
-		padding: 40px 20px 40px;
-	}
 	#restaurants-list .restaurant-img {
 		margin: 7px 15px 7px 5px;
 		width: 50%;
@@ -352,7 +385,7 @@ nav h1 a {
 		display: inline;
 		float: left;
 	}
-	#restaurants-list li h1 {
+	#restaurants-list li h3 {
 		margin: 5px 0 10px;
 	}
 }
@@ -413,6 +446,7 @@ nav h1 a {
   margin: 15px 0 20px;
   text-transform: uppercase;
   line-height: 1.1;
+	padding: 5px 0;
 }
 #restaurant-container {
 	width: 100%;
@@ -451,18 +485,11 @@ nav h1 a {
   padding-top: 20px;
 }
 
-#reviews-container h2 {
-  color: #095aa0;
-  font-size: 1.5rem;
-  font-weight: 300;
-  padding: 0 0 0 10px;
-}
-
 @media (min-width: 650px) {
 	.inside #maincontent {
 		flex-direction: row;
 		flex-wrap: wrap;
-		padding-top: 135px;
+		margin-top: 135px;
 	}
 
 	#restaurant-container {

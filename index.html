@@ -17,16 +17,17 @@
       <nav>
         <h1><a href="/">Appetizer</a></h1>
       </nav>
+      <h2 class="home-subtitle">Your restaurant reviews app</h2>
     </header>
 
     <main id="maincontent">
-      <section id="map-container">
-        <div id="map"></div>
-      </section>
-      <section class="filter-container">
+      <aside id="map-container">
+        <h2 id="map-title" hidden="true">Interactive Restaurants map</h2>
+        <div id="map" aria-role="application" aria-labelledby="map-title"></div>
+      </aside>
+      <section class="restaurants-container">
         <div class="filter-options">
-          <h2>Your restaurant reviews app!</h2>
-          <p>Filter Results</p>
+          <h2 id="filter-title">Filter Results</h2>
           <select id="neighborhoods-select" name="neighborhoods" onchange="updateRestaurants()">
             <option value="all">All Neighborhoods</option>
           </select>
@@ -34,6 +35,7 @@
             <option value="all">All Cuisines</option>
           </select>
         </div>
+        <h2>Restaurants</h2>
         <ul id="restaurants-list"></ul>
       </section>
     </main>
