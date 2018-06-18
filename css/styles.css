@@ -49,7 +49,7 @@ article, aside, canvas, details, figcaption, figure, footer, header, hgroup, men
 	display: flex;
 	flex-wrap: wrap;
 	position: relative;
-	justify-content: flex-end;
+	justify-content: flex-start;
 	max-width: 1200px;
 	margin: 0 auto;
 }
@@ -162,17 +162,21 @@ nav h1 a {
 }
 
 /* ====================== Restaurant Filtering ====================== */
+.filter-container h2 {
+	color: #fff;
+	background-color: #095aa0;
+}
+
 .filter-options {
   width: 100%;
   height: auto;
-  background: linear-gradient(#095aa0 60%, #05a0a0);
+  background: linear-gradient(#095aa0 50%, #05a0a0);
   align-items: center;
 	padding: 20px 10px 15px;
 }
 
-.filter-options h2 {
+.filter-options p {
   color: white;
-  font-size: 1.25rem;
   font-weight: normal;
   line-height: 1;
   margin: 0 5px;
@@ -200,9 +204,9 @@ nav h1 a {
 	}
 }
 
-@media (min-width: 750px) {
+@media (min-width: 768px) {
 	#map-container {
-		width: 70%;
+		width: 50%;
 		min-height: 400px;
 	}
 	#map {
@@ -210,15 +214,34 @@ nav h1 a {
 	}
 	.filter-options {
     height: 400px;
-    width: 30%;
+    width: 50%;
 		position: absolute;
 		top: 0;
+		right: 0;
 	}
 	.filter-options select {
   	width: calc(100% - 13px); /* 22px = margins + borders */
 	}
 }
 
+
+@media (min-width: 900px) {
+	#map-container {
+		width: 60%;
+	}
+	.filter-options {
+    width: 40%;
+	}
+}
+
+@media (min-width: 1024px) {
+	#map-container {
+		width: 70%;
+	}
+	.filter-options {
+    width: 30%;
+	}
+}
 /* ====================== Restaurant Listing ====================== */
 #restaurants-list {
   background-color: #f3f3f3;
