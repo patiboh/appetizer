@@ -23,15 +23,17 @@
     <main id="maincontent">
       <aside id="map-container">
         <h2 id="map-title" hidden="true">Interactive Restaurants map</h2>
-        <div id="map" aria-role="application" aria-labelledby="map-title"></div>
+        <div id="map" role="application" aria-labelledby="map-title"></div>
       </aside>
       <section class="restaurants-container">
         <div class="filter-options">
           <h2 id="filter-title">Filter Results</h2>
-          <select id="neighborhoods-select" name="neighborhoods" onchange="updateRestaurants()">
+          <label id="neighborhoods-label" hidden>All Neighborhoods</label>
+          <select id="neighborhoods-select" name="neighborhoods" onchange="updateRestaurants()" aria-labelledby="neighborhoods-label">
             <option value="all">All Neighborhoods</option>
           </select>
-          <select id="cuisines-select" name="cuisines" onchange="updateRestaurants()">
+          <label id="cuisines-label" hidden>All Cuisines</label>
+          <select id="cuisines-select" name="cuisines" onchange="updateRestaurants()" aria-labelledby="cuisines-label">
             <option value="all">All Cuisines</option>
           </select>
         </div>

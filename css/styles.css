@@ -71,7 +71,7 @@ article, aside, canvas, details, figcaption, figure, footer, header, hgroup, men
 }
 .home-subtitle {
     padding: 10px 15px 16px;
-		background: #05a0a0;
+	  background: #007a8a;
     font-size: 1.25rem;
     margin: 0 auto;
 		display: inline-block;
@@ -170,7 +170,7 @@ nav h1 a {
 	}
 	#breadcrumb {
     padding: 10px 20px 16px;
-		background:linear-gradient(0.65turn, transparent,  #05a0a0, #095aa0);
+		background: linear-gradient(0.65turn, transparent,  #05a0a0, #095aa0);
 	}
 }
 @media (min-width: 900px) {
@@ -209,6 +209,17 @@ nav h1 a {
   line-height: 1;
   margin: 0 5px 10px;
 	padding: 0;
+}
+
+.filter-options label {
+	color: white;
+	margin-bottom: 10px;
+	font-size: 1rem;
+	/* transition: all .3s ease-in; */
+}
+.filter-options label.hidden {
+	color: transparent;
+	margin-bottom: -20px;
 }
 
 .filter-options select {
@@ -483,6 +494,12 @@ nav h1 a {
 
 #reviews-container {
   padding-top: 20px;
+}
+
+#reviews-container h3 {
+	  color: #095aa0;
+	  font-size: 1.25rem;
+	  font-weight: 300;
 }
 
 @media (min-width: 650px) {
