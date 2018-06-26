@@ -12,7 +12,19 @@ let filesToCache = [
   '/js/dbhelper.js',
   '/js/main.js',
   '/js/restaurant-info.js',
-  '/css/styles.css'
+  '/css/styles.css',
+  '/img/1.jpg',
+  '/img/2.jpg',
+  '/img/3.jpg',
+  '/img/4.jpg',
+  '/img/5.jpg',
+  '/img/6.jpg',
+  '/img/7.jpg',
+  '/img/8.jpg',
+  '/img/9.jpg',
+  '/img/10.jpg',
+  'https://unpkg.com/leaflet@1.3.1/dist/leaflet.js',
+  'https://unpkg.com/leaflet@1.3.1/dist/leaflet.css'
 ];
 precache = () => {
   return caches.open(staticCacheName).then((cache) => {
@@ -21,12 +33,12 @@ precache = () => {
 };
 
 self.addEventListener('install', (event) => {
-  console.log('[ServiceWorker] Install', event);
+  console.log('[ServiceWorker] Install');
   event.waitUntil(precache());
 });
 
 self.addEventListener('activate', (event) => {
-  console.log('[ServiceWorker] Activate', event);
+  console.log('[ServiceWorker] Activate');
   event.waitUntil(
     caches.keys().then(function(cacheNames) {
       return Promise.all(
@@ -44,45 +56,20 @@ self.addEventListener('activate', (event) => {
 self.addEventListener('fetch', (event) => {
   console.log('[ServiceWorker] Fetch', event.request.url);
   var requestUrl = new URL(event.request.url);
-
   if (requestUrl.origin === location.origin) {
-  //   event.respondWith(
-  //     fetch(event.request)
-  //       .then(function(response) {
-  //         return caches.open(dataCacheName).then(function(cache) {
-  //           cache.put(event.request.url, response.clone());
-  //           console.log('[ServiceWorker] Fetched&Cached Data');
-  //           return response;
-  //         });
-  //       })
-  //   );
-
-    // TEST
-    // if (requestUrl.pathname === '/') {
-    //   event.respondWith(caches.match('/index.html'));
-    //   return;
-    // }
-    // if (requestUrl.pathname.startsWith('/restaurant')) {
-    //   event.respondWith(caches.match('/restaurant.html'));
-    //   return;
-    // }
-    // if (requestUrl.pathname.startsWith('/img/')) {
-    //   event.respondWith(serveAvatar(event.request));
-    //
-    //   var storageUrl = event.request.url.replace(/-\dx\.jpg$/, '');
-    //   caches.open(contentImgsCache).then(function(cache) {
-    //     fetch(event.request).then(function(networkResponse) {
-    //       cache.put(storageUrl, networkResponse);
-    //     });
-    //   });
-    //   return;
-    // }
-
     event.respondWith(
-      caches.match(event.request).then(function(response) {
+      caches.match(event.request).then((response) => {
         return response || fetch(event.request);
-      })
-    );
+      }));
+  } else {
+    event.respondWith(
+      fetch(event.request).then((response) => {
+        return caches.open(staticCacheName).then(function(cache) {
+          cache.put(event.request.url, response.clone());
+          console.log('[ServiceWorker] Fetched&Cached Data');
+          return response;
+        });
+    }));
   }
 });
 
