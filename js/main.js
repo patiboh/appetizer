@@ -1,3 +1,6 @@
+import loadScripts from './utils/loadScripts';
+import IndexController from 'IndexController';
+
 let restaurants,
   neighborhoods,
   cuisines
@@ -211,15 +214,3 @@ addMarkersToMap = (restaurants = self.restaurants) => {
     self.markers.push(marker);
   });
 } */
-
-
-/**
- * Register ServiceWorker
- */
-registerServiceWorker = () => {
-  if ('serviceWorker' in navigator) {
-     navigator.serviceWorker
-              .register('./js/service-worker.js')
-              .then(function() { console.log('Service Worker Registered'); });
-   }
-}
