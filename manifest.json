@@ -1,0 +1,6 @@
+{
+  "name": "Appetizer",
+  "scope": "/",
+  "display": "standalone",
+  "start_url": "/"
+}
