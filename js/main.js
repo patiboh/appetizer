@@ -1,3 +1,6 @@
+import loadScripts from './utils/loadScripts';
+import IndexController from 'IndexController';
+
 let restaurants,
   neighborhoods,
   cuisines
@@ -211,6 +214,7 @@ addMarkersToMap = (restaurants = self.restaurants) => {
     self.markers.push(marker);
   });
 } */
+<<<<<<< HEAD
 
 
 /**
@@ -259,3 +263,5 @@ trackInstalling = (worker) => {
 updateReady = (worker) => {
   worker.postMessage({action: 'skipWaiting'});
 };
+=======
+>>>>>>> cfbf955555184c32ea97a11196112e95c675d063
