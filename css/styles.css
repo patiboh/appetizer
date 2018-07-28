@@ -43,7 +43,7 @@ article, aside, canvas, details, figcaption, figure, footer, header, hgroup, men
 	display: block;
 }
 #maincontent {
-	width: 100;
+	width: 100%;
 	text-align: center;
 }
 .home-subtitle {
@@ -284,6 +284,9 @@ nav h1 a {
 	}
 }
 /* ====================== Restaurant Listing ====================== */
+.restaurants-container {
+	width: 100%;
+}
 .restaurants-container > h2 {
 	padding: 20px 20px 0;
 }

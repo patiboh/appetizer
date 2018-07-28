@@ -1,5 +1,5 @@
-import loadScripts from './utils/loadScripts';
-import IndexController from 'IndexController';
+// import loadScripts from './utils/loadScripts.js';
+// import MainController from './MainController.js';
 
 let restaurants,
   neighborhoods,
@@ -14,7 +14,6 @@ document.addEventListener('DOMContentLoaded', (event) => {
   initMap(); // added
   fetchNeighborhoods();
   fetchCuisines();
-  registerServiceWorker();
 });
 
 /**
@@ -214,54 +213,3 @@ addMarkersToMap = (restaurants = self.restaurants) => {
     self.markers.push(marker);
   });
 } */
-<<<<<<< HEAD
-
-
-/**
- * Register ServiceWorker
- */
-registerServiceWorker = () => {
-  if (!navigator.serviceWorker) return;
-  navigator.serviceWorker.register('./service-worker.js').then(function(reg) {
-    if (!navigator.serviceWorker.controller) {
-      return;
-    }
-    console.log('Service Worker Registered');
-    if (reg.waiting) {
-      updateReady(reg.waiting);
-      return;
-    }
-
-    if (reg.installing) {
-      trackInstalling(reg.installing);
-      return;
-    }
-
-    reg.addEventListener('updatefound', function() {
-      trackInstalling(reg.installing);
-    });
-  });
-
-  // Ensure refresh is only called once.
-  // This works around a bug in "force update on reload".
-  var refreshing;
-  navigator.serviceWorker.addEventListener('controllerchange', function() {
-    if (refreshing) return;
-    window.location.reload();
-    refreshing = true;
-  });
-}
-
-trackInstalling = (worker) => {
-  worker.addEventListener('statechange', function() {
-    if (worker.state == 'installed') {
-      updateReady(worker);
-    }
-  });
-};
-
-updateReady = (worker) => {
-  worker.postMessage({action: 'skipWaiting'});
-};
-=======
->>>>>>> cfbf955555184c32ea97a11196112e95c675d063

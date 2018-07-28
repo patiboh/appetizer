@@ -6,13 +6,13 @@ export default function MainController(container) {
 /**
  * Register ServiceWorker
  */
-registerServiceWorker = () => {
-  if ('serviceWorker' in navigator) {
-     navigator.serviceWorker
-              .register('./js/service-worker.js')
-              .then(function() { console.log('[Main] ServiceWorker registered'); });
-   }
-}
+// registerServiceWorker = () => {
+//   if ('serviceWorker' in navigator) {
+//      navigator.serviceWorker
+//               .register('./js/service-worker.js')
+//               .then(function() { console.log('[Main] ServiceWorker registered'); });
+//    }
+// }
 
 /**
  * Register ServiceWorker
@@ -22,7 +22,7 @@ MainController.prototype._registerServiceWorker = function() {
 
   let mainController = this;
 
-  navigator.serviceWorker.register('./js/service-worker.js').then(function(reg) {
+  navigator.serviceWorker.register('./service-worker.js').then(function(reg) {
     if (!navigator.serviceWorker.controller) {
       return;
     }
