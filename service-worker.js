@@ -54,11 +54,10 @@ self.addEventListener('activate', (event) => {
 });
 
 self.addEventListener('fetch', (event) => {
-  console.log('[ServiceWorker] Fetch', event.request.url);
   var requestUrl = new URL(event.request.url);
   if (requestUrl.origin === location.origin) {
     event.respondWith(
-      caches.match(event.request).then((response) => {
+      caches.match(event.request.url.pathname).then((response) => {
         return response || fetch(event.request);
       }));
   } else {
@@ -66,7 +65,6 @@ self.addEventListener('fetch', (event) => {
       fetch(event.request).then((response) => {
         return caches.open(staticCacheName).then(function(cache) {
           cache.put(event.request.url, response.clone());
-          console.log('[ServiceWorker] Fetched&Cached Data');
           return response;
         });
     }));
