@@ -519,8 +519,8 @@ nav h1 a {
 
 #reviews-container h3 {
 	  color: #095aa0;
-	  font-size: 1.25rem;
 	  font-weight: 300;
+		text-transform: uppercase;
 }
 
 @media (min-width: 650px) {

@@ -1,4 +1,4 @@
-let staticCacheName = 'appetizer-v1';
+let staticCacheName = 'appetizer-v12';
 let contentImgsCache = 'appetizer-content-imgs';
 let allCaches = [
   staticCacheName,
@@ -55,20 +55,15 @@ self.addEventListener('activate', (event) => {
 
 self.addEventListener('fetch', (event) => {
   var requestUrl = new URL(event.request.url);
-  if (requestUrl.origin === location.origin) {
-    event.respondWith(
-      caches.match(event.request.url.pathname).then((response) => {
-        return response || fetch(event.request);
-      }));
-  } else {
-    event.respondWith(
-      fetch(event.request).then((response) => {
+  event.respondWith(
+    caches.match(event.request.url).then((response) => {
+      return response || fetch(event.request).then((response) => {
         return caches.open(staticCacheName).then(function(cache) {
           cache.put(event.request.url, response.clone());
           return response;
         });
-    }));
-  }
+    });
+  }));
 });
 
 
