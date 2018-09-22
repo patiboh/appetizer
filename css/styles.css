@@ -188,6 +188,27 @@ nav h1 a {
 }
 
 /* ====================== Map ====================== */
+
+#map-container {
+	position: relative;
+}
+
+.skip-map:focus {
+	position: absolute;
+	top: 0;
+	right: 0;
+	z-index: 999;
+	width: 100px;
+	height: 30px;
+	background-color: #fff;
+	text-align: center;
+}
+.skip-map:focus::before {
+	content: "Skip map";
+	color: #095aa0;
+	width: 100%;
+}
+
 #map-container {
 	width: 100%;
 	height: auto;
