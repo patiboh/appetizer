@@ -64,6 +64,12 @@ self.addEventListener('fetch', (event) => {
         });
     });
   }));
+  fetch(event.request).then((response) => {
+    return caches.open(staticCacheName).then(function(cache) {
+      cache.put(event.request.url, response.clone());
+      return response;
+    });
+  });
 });
 
 
