@@ -4,7 +4,7 @@
     "name": "Mission Chinese Food",
     "neighborhood": "Manhattan",
     "photograph": "1.jpg",
-    "alt": "The restaurant's interior with a high cealing eating tablea and guests",
+    "alt": "View of the restaurant's interior: a high ceiling, an eating table with guests",
     "address": "171 E Broadway, New York, NY 10002",
     "latlng": {
       "lat": 40.713829,
@@ -204,7 +204,7 @@
     "name": "Hometown BBQ",
     "neighborhood": "Brooklyn",
     "photograph": "6.jpg",
-    "alt": "A view of the restaurant's spacious main floor, ith its decoration as laid back as its customers",
+    "alt": "A view of the restaurant's spacious main floor, its decoration looks as laid back as its customers",
     "address": "454 Van Brunt St, Brooklyn, NY 11231",
     "latlng": {
       "lat": 40.674925,
