@@ -85,6 +85,11 @@ h2 {
   padding: 0 0 0 10px;
 	margin: 0;
 }
+@media (min-width: 1200px) {
+	.home-subtitle h2 {
+		padding: 0;
+	}
+}
 
 header a:focus, header a:hover {
 	color: #ccc;
@@ -126,13 +131,21 @@ nav h1 a {
   text-transform: uppercase;
 }
 
-#breadcrumb {
-    padding: 10px 15px 16px;
-    list-style: none;
+.breadcrumb-container {
+    padding: 10px 0 16px;
 		background: linear-gradient(0.85turn, transparent,  #05a0a0, #095aa0);
+		text-align: center;
+}
+
+#breadcrumb {
+		max-width: 1200px;
+		margin: 0 auto;
+    list-style: none;
+		padding: 0 20px;
     margin: 0 auto;
 		display: inline-block;
 		width: 100%;
+		text-align: left;
 }
 
 /* Display list items side by side */
@@ -166,9 +179,11 @@ nav h1 a {
 	.home-subtitle {
     padding: 10px 20px 16px;
 	}
-	#breadcrumb {
-    padding: 10px 20px 16px;
-		background: linear-gradient(0.65turn, transparent,  #05a0a0, #095aa0);
+}
+
+@media (min-width: 1200px) {
+	#breadcrumb  {
+		padding: 0;
 	}
 }
 
