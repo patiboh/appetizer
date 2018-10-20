@@ -1,4 +1,4 @@
-let staticCacheName = 'appetizer-v12';
+let staticCacheName = 'appetizer-v1';
 let contentImgsCache = 'appetizer-content-imgs';
 let allCaches = [
   staticCacheName,
@@ -13,39 +13,31 @@ let filesToCache = [
   '/js/main.js',
   '/js/restaurant-info.js',
   '/css/styles.css',
-  '/img/1.jpg',
-  '/img/2.jpg',
-  '/img/3.jpg',
-  '/img/4.jpg',
-  '/img/5.jpg',
-  '/img/6.jpg',
-  '/img/7.jpg',
-  '/img/8.jpg',
-  '/img/9.jpg',
-  '/img/10.jpg',
   'https://unpkg.com/leaflet@1.3.1/dist/leaflet.js',
   'https://unpkg.com/leaflet@1.3.1/dist/leaflet.css'
 ];
-precache = () => {
-  return caches.open(staticCacheName).then((cache) => {
-    return cache.addAll(filesToCache);
-  });
-};
 
 self.addEventListener('install', (event) => {
   console.log('[ServiceWorker] Install');
-  event.waitUntil(precache());
+  event.waitUntil(
+    caches.open(staticCacheName).then((cache) => {
+
+      return cache.addAll(filesToCache);
+    })
+  );
 });
 
 self.addEventListener('activate', (event) => {
   console.log('[ServiceWorker] Activate');
   event.waitUntil(
-    caches.keys().then(function(cacheNames) {
+    caches.keys().then((cacheNames) => {
       return Promise.all(
-        cacheNames.filter(function(cacheName) {
+        cacheNames.filter((cacheName) => {
+
           return cacheName.startsWith('appetizer-') &&
                  !allCaches.includes(cacheName);
-        }).map(function(cacheName) {
+        }).map((cacheName) => {
+
           return caches.delete(cacheName);
         })
       );
@@ -55,26 +47,62 @@ self.addEventListener('activate', (event) => {
 
 self.addEventListener('fetch', (event) => {
   var requestUrl = new URL(event.request.url);
-  
-  event.respondWith(
-    caches.match(requestUrl.pathname).then((response) => {
-      return response || fetch(event.request).then((response) => {
-        return caches.open(staticCacheName).then(function(cache) {
-          cache.put(requestUrl, response.clone());
-          return response;
+
+  if (requestUrl.origin === location.origin) {
+    if (requestUrl.pathname.startsWith('/img/')) {
+      event.respondWith(servePhoto(event.request));
+
+      return;
+    }
+    event.respondWith(
+      caches.match(event.request).then((response) => {
+        return response || caches.open(staticCacheName).then((cache) => {
+          return fetch(event.request).then((networkResponse) => {
+            cache.put(event.request, networkResponse.clone());
+            return networkResponse;
+          });
         });
-    });
-  }));
-  fetch(event.request).then((response) => {
-    return caches.open(staticCacheName).then(function(cache) {
-      cache.put(requestUrl.pathname, response.clone());
-      return response;
-    });
-  });
+      })
+    );
+
+    return;
+  }
+
+  if (requestUrl.origin === 'https://unpkg.com/leaflet@1.3.1/') {
+    if (requestUrl.pathname.startsWith('/dist/images/')) {
+      event.respondWith(servePhoto(event.request));
+      
+      return;
+    }
+  }
+
+  event.respondWith(
+    caches.match(event.request).then(function(response) {
+
+      return response || fetch(event.request);
+    })
+  );
 });
 
 
-self.addEventListener('message', function(event) {
+function servePhoto(request) {
+  var storageUrl = request.url.replace(/-\d+px\.jpg$/, '');
+
+  return caches.open(contentImgsCache).then((cache) => {
+
+    return cache.match(storageUrl).then((response) => {
+      if (response) return response;
+
+      return fetch(request).then((networkResponse) => {
+        cache.put(storageUrl, networkResponse.clone());
+
+        return networkResponse;
+      });
+    });
+  });
+}
+
+self.addEventListener('message', (event) => {
   if (event.data.action === 'skipWaiting') {
     self.skipWaiting();
   }
