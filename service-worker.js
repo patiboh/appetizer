@@ -71,13 +71,13 @@ self.addEventListener('fetch', (event) => {
   if (requestUrl.origin === 'https://unpkg.com/leaflet@1.3.1/') {
     if (requestUrl.pathname.startsWith('/dist/images/')) {
       event.respondWith(servePhoto(event.request));
-      
+
       return;
     }
   }
 
   event.respondWith(
-    caches.match(event.request).then(function(response) {
+    caches.match(event.request).then((response) => {
 
       return response || fetch(event.request);
     })
