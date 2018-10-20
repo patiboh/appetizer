@@ -269,6 +269,8 @@ nav h1 a {
   background: linear-gradient(#095aa0 30%, #05a0a0);
   align-items: center;
 	padding: 20px 10px 15px;
+	position: relative;
+	z-index: 2;
 }
 
 .filter-options h2 {
